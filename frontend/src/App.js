@@ -22,10 +22,8 @@ function App() {
   const loader = async ({ request }) => {
     const url = new URL(request.url)
     const query = url.searchParams.get("query")
-    const page = url.searchParams.get("page")
     console.log(url)
     console.log(query)
-    console.log(page)
     // ADD QUERYING REQUEST HERE
     return null;
   }
