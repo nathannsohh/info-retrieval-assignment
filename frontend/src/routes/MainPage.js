@@ -37,7 +37,7 @@ const MainPage = (props) => {
     <Center h="75%">
         <VStack>
           <Image src={ELONMUSK} alt="Elon Musk Image" width="600px" objectFit='contain'/>
-          <AutoComplete openOnFocus={false} onSelectOption={(item) => {console.log(item.item.value); onOptionClickHandler(item.item.value)}} prefocusFirstItem={false} emptyState={false} freeSolo={true}>
+          <AutoComplete openOnFocus={false} onSelectOption={(item) => { onOptionClickHandler(item.item.value) }} prefocusFirstItem={false} emptyState={false}>
             <InputGroup borderColor="#666666" size='lg'>
               <InputLeftElement>
                 <IoIosSearch size={23} color="#666666"/>
