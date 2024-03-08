@@ -1,4 +1,4 @@
-import { Center, VStack, Image, InputGroup, InputLeftElement, Button } from "@chakra-ui/react"
+import { Center, VStack, Image, InputGroup, InputLeftElement, Button, Text } from "@chakra-ui/react"
 import {
     AutoComplete,
     AutoCompleteInput,
