@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="news" version="1.6">
+
+    <field name="_version_" type="plong" indexed="true" stored="true" multiValued="false"/>
+    <field name="results__uri" type="string" indexed="true" stored="true"/>
+    <field name="results__lang" type="string" indexed="true" stored="true"/>
+    <field name="results__isDuplicate" type="boolean" indexed="true" stored="true"/>
+    <field name="results__date" type="pdate" indexed="true" stored="true"/>
+    <field name="results__time" type="string" indexed="false" stored="true"/>
+    <field name="results__dateTime" type="pdate" indexed="true" stored="true"/>
+    <field name="results__dateTimePub" type="pdate" indexed="true" stored="true"/>
+    <field name="results__dataType" type="string" indexed="true" stored="true"/>
+    <field name="results__sim" type="pfloat" indexed="true" stored="true"/>
+    <field name="results__url" type="string" indexed="true" stored="true"/>
+    <field name="results__title" type="text_general" indexed="true" stored="true"/>
+    <field name="results__body" type="text_general" indexed="true" stored="true"/>
+    <field name="results__source__uri" type="string" indexed="true" stored="true"/>
+    <field name="results__source__dataType" type="string" indexed="true" stored="true"/>
+    <field name="results__source__title" type="text_general" indexed="true" stored="true"/>
+    <field name="results__authors__uri" type="string" indexed="true" stored="true"/>
+    <field name="results__authors__name" type="text_general" indexed="true" stored="true"/>
+    <field name="results__authors__type" type="string" indexed="true" stored="true"/>
+    <field name="results__authors__isAgency" type="boolean" indexed="true" stored="true"/>
+    <field name="results__image" type="string" indexed="false" stored="true"/>
+    <field name="results__eventUri" type="string" indexed="true" stored="true"/>
+    <field name="results__sentiment" type="pfloat" indexed="true" stored="true"/>
+    <field name="results__wgt" type="pint" indexed="true" stored="true"/>
+    <field name="results__relevance" type="pfloat" indexed="true" stored="true"/>
+
+    <uniqueKey>results__uri</uniqueKey>
+
+    <fieldType name="plong" class="solr.LongPointField" docValues="true" multiValued="true"/>
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
+    <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+    <fieldType name="pdate" class="solr.DatePointField" sortMissingLast="true"/>
+    <fieldType name="pfloat" class="solr.FloatPointField" sortMissingLast="true"/>
+    <fieldType name="pint" class="solr.IntPointField" sortMissingLast="true"/>
+    <fieldType name="text_general" class="solr.TextField">
+        <analyzer type="index">
+            <tokenizer class="solr.StandardTokenizerFactory"/>
+            <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <filter class="solr.EnglishPossessiveFilterFactory"/>
+            <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+            <filter class="solr.PorterStemFilterFactory"/>
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+            <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+            <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+            <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
+                    catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+            <filter class="solr.PorterStemFilterFactory"/>
+            <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+        </analyzer>
+    </fieldType>
+</schema>
