@@ -5,11 +5,11 @@
     <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
     <field name="createdAt" type="pdate" indexed="true" stored="true"/>
     <field name="userName" type="string" indexed="true" stored="true"/>
-    <field name="fullText" type="text_en" indexed="true" stored="true"/>
+    <field name="fullText" type="text_general" indexed="true" stored="true"/>
     <field name="replyTo" type="string" indexed="true" stored="true"/>
     <field name="lang" type="string" indexed="true" stored="true"/>
     <field name="quoteCount" type="pint" indexed="true" stored="true"/>
-    <field name="retweetCount" type="pint" indexed="true" stored="true"/>
+    <field name="retweetCount" type="pint" indexed="true" stored="true"/>f
     <field name="replyCount" type="pint" indexed="true" stored="true"/>
     <field name="likeCount" type="pint" indexed="true" stored="true"/>
 
@@ -19,7 +19,7 @@
     <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
     <fieldType name="pdate" class="solr.DatePointField" sortMissingLast="true"/>
     <fieldType name="pint" class="solr.IntPointField" sortMissingLast="true"/>
-    <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
         <analyzer type="index">
             <!-- Preferred over WhitespaceTokenizerFactory for tweets -->
             <tokenizer class="solr.StandardTokenizerFactory"/>

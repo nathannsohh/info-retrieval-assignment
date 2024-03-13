@@ -679,7 +679,6 @@
     -->
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
 
-<!--     Comment this out -->
     <str name="queryAnalyzerFieldType">text_general</str>
 
     <!-- Multiple "Spell Checkers" can be declared and used by this

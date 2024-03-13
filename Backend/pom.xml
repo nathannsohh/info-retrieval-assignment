@@ -24,6 +24,8 @@
         <org.apache.solr.version>9.5.0</org.apache.solr.version>
         <!-- Apache Commons CSV -->
         <org.apache.commons.version>1.10.0</org.apache.commons.version>
+        <!-- Apache Commons IO -->
+        <org.apache.commons.io.version>2.15.1</org.apache.commons.io.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -107,6 +109,12 @@
         <dependency>
             <groupId>org.eclipse.jetty.http2</groupId>
             <artifactId>http2-client</artifactId>
+        </dependency>
+        <!-- Apoache Commons IO -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${org.apache.commons.io.version}</version>
         </dependency>
     </dependencies>
 
