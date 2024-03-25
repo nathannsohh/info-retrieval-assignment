@@ -133,6 +133,7 @@ public class SolrIndexer {
             tweet.setRetweetCount(Integer.parseInt(csvRecord.get("retweetCount")));
             tweet.setReplyCount(Integer.parseInt(csvRecord.get("replyCount")));
             tweet.setLikeCount(Integer.parseInt(csvRecord.get("likeCount")));
+            tweet.setSentiment(csvRecord.get("sentiment"));
             return tweet;
         });
         LOGGER.info("Tweets parsed");

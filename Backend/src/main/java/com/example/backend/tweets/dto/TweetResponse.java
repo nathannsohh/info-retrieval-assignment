@@ -18,4 +18,5 @@ public class TweetResponse {
     private Integer retweetCount;
     private Integer replyCount;
     private Integer likeCount;
+    private String sentiment;
 }

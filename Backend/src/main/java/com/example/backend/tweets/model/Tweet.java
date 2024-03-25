@@ -33,6 +33,8 @@ public class Tweet {
     private Integer replyCount;
     @Field
     private Integer likeCount;
+    @Field
+    private String sentiment;
 
     public SolrInputDocument toSolrDocument() {
         SolrInputDocument doc = new SolrInputDocument();
@@ -46,6 +48,7 @@ public class Tweet {
         doc.addField("retweetCount", retweetCount);
         doc.addField("replyCount", replyCount);
         doc.addField("likeCount", likeCount);
+        doc.addField("sentiment", sentiment);
         return doc;
     }
 
