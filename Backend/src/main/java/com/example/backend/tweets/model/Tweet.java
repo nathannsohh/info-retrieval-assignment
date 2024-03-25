@@ -1,7 +1,10 @@
 package com.example.backend.tweets.model;
 
 import lombok.*;
+import org.apache.solr.client.solrj.beans.Field;
 import org.apache.solr.common.SolrInputDocument;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -10,15 +13,25 @@ import org.apache.solr.common.SolrInputDocument;
 @AllArgsConstructor
 public class Tweet {
 
+    @Field
     private String id;
-    private String createdAt; // String representation of date
+    @Field
+    private Date createdAt;
+    @Field
     private String userName;
+    @Field
     private String fullText;
+    @Field
     private String replyTo;
+    @Field
     private String lang;
+    @Field
     private Integer quoteCount;
+    @Field
     private Integer retweetCount;
+    @Field
     private Integer replyCount;
+    @Field
     private Integer likeCount;
 
     public SolrInputDocument toSolrDocument() {

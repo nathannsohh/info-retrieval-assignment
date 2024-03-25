@@ -17,7 +17,7 @@ import java.io.IOException;
 public class SolrIndexerRunner implements CommandLineRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SolrIndexerRunner.class);
-    private final SolrServer solrServer;
+    private final SolrIndexer solrIndexer;
     @Value("${app.csv.news}")
     private String newsCsvPath;
 
@@ -25,15 +25,15 @@ public class SolrIndexerRunner implements CommandLineRunner {
     private String tweetsCsvPath;
 
     @Autowired
-    public SolrIndexerRunner(SolrServer solrServer) {
-        this.solrServer = solrServer;
+    public SolrIndexerRunner(SolrIndexer solrIndexer) {
+        this.solrIndexer = solrIndexer;
     }
 
     @Override
     public void run(String... args) {
         try {
-            solrServer.indexNewsArticles(newsCsvPath);
-            solrServer.indexTweets(tweetsCsvPath);
+            solrIndexer.indexNewsArticles(newsCsvPath);
+            solrIndexer.indexTweets(tweetsCsvPath);
         } catch (CsvParsingException | IndexingException | CommittingException | SolrServerException | IOException e) {
             LOGGER.error("Error while storing data in Solr", e);
         }

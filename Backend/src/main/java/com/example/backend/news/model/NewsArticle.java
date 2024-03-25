@@ -3,6 +3,8 @@ package com.example.backend.news.model;
 import lombok.*;
 import org.apache.solr.common.SolrInputDocument;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -12,10 +14,10 @@ public class NewsArticle {
     private String uri;
     private String language;
     private boolean isDuplicate;
-    private String date;
-    private String time;
-    private String dateTime;
-    private String dateTimePub;
+    private Date date;
+    private Date time;
+    private Date dateTime;
+    private Date dateTimePub;
     private String dataType;
     private double similarity;
     private String url;
