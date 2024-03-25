@@ -12,6 +12,7 @@
     <field name="retweetCount" type="pint" indexed="true" stored="true"/>f
     <field name="replyCount" type="pint" indexed="true" stored="true"/>
     <field name="likeCount" type="pint" indexed="true" stored="true"/>
+    <field name="sentiment" type="string" indexed="true" stored="true"/>
 
     <uniqueKey>id</uniqueKey>
 
