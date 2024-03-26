@@ -79,7 +79,7 @@ const ResultPage = (props) => {
                     <Box width="60%" p={4} pl={16} height="89vh" overflowY="scroll">
                         {data.articles.map((article, index) => <NewsArticle key={index} article={article} index={index} handleSelected={handleSelected}/>)}
                     </Box>
-                    <Box width="40%" p={4}>
+                    <Box width="40%" p={4} height="89vh">
                         {selected !== null && <ArticleResult articleTitle={data.articles[selected].title} handleClose={closeArticleResult}/>}
                     </Box>
                 </Flex>
