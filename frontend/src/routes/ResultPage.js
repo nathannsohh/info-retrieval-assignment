@@ -77,7 +77,18 @@ const ResultPage = (props) => {
             <Box pt="90px">
                 <Flex>
                     <Box width="60%" height="89vh" overflowY="scroll">
-                        {data.tweets.map((article, index) => <NewsTweet key={index} tweet={article} index={index} handleSelected={handleSelected} isSelected={selected === index}/>)}
+                        <HStack p={3} pl={16} position="fixed" bg="white" zIndex={999} width="60%" borderBottom="1px" borderRight="1px" borderColor="#DDDCDC">
+                            <Text>Filter by:</Text>
+                            <Button borderRadius={20}>Relevance</Button>
+                            <Button borderRadius={20}>Retweets</Button>
+                            <Button borderRadius={20}>Likes</Button>
+                            <Button borderRadius={20}>Date</Button>
+                            <Button borderRadius={20}>Media</Button>
+                        </HStack>
+                        <Divider />
+                        <Box pt="60px">
+                            {data.tweets.map((article, index) => <NewsTweet key={index} tweet={article} index={index} handleSelected={handleSelected} isSelected={selected === index}/>)}
+                        </Box>
                     </Box>
                     <Box width="40%" p={4} height="89vh">
                         {selected !== null && <NewsTweetResult tweetId={data.tweets[selected].id} handleClose={closeArticleResult}/>}
