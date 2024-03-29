@@ -1,33 +1,39 @@
-import { Badge, Box, HStack, Heading, Text, IconButton, Flex, VStack, Center } from "@chakra-ui/react"
+import { Badge, Box, HStack, Heading, Text, IconButton, Flex, Center, Spacer } from "@chakra-ui/react"
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { IoHappyOutline } from "react-icons/io5";
-import { IoSadOutline } from "react-icons/io5";
+import { CiFaceSmile } from "react-icons/ci";
+import { CiFaceFrown } from "react-icons/ci";
+import { CiFaceMeh } from "react-icons/ci";
 import { IoHeartSharp } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
 import Tweet from "./Tweet";
 
 
-const ArticleResult = (props) => {
+const NewsTweetResult = (props) => {
     const [tweets, setTweets] = useState([1,1,1,1,1,1,1,1,1])
     return (
         <Flex direction={"column"}>
             <Flex>
-                <Heading>{props.articleTitle}</Heading>
+                <Heading fontSize={30}>News Analysis</Heading>
+                <Spacer />
                 <IconButton icon={<IoMdClose size={25} />} variant="ghost" onClick={props.handleClose}/>
             </Flex>
             <Box color="#505357" fontSize={18} mt={3}>
-                <HStack>
+                <HStack mb={1}>
                     <FaSquareXTwitter size={25} />
-                    <Text><b>Total Tweets:</b> 342</Text>
+                    <Text><b>Total Replies:</b> 342</Text>
                 </HStack>
-                <HStack>
-                    <IoHappyOutline size={25}/>
-                    <Text><b>Positive:</b> 51%</Text>
+                <HStack mb={1}>
+                    <CiFaceSmile size={25}/>
+                    <Text><b>Positive Replies:</b> 51%</Text>
                 </HStack>
-                <HStack>
-                    <IoSadOutline size={25}/>
-                    <Text><b>Negative:</b> 49%</Text>
+                <HStack mb={1}>
+                    <CiFaceFrown size={25}/>
+                    <Text><b>Negative Replies:</b> 48%</Text>
+                </HStack>
+                <HStack mb={1}>
+                    <CiFaceMeh size={25}/>
+                    <Text><b>Neutral Replies:</b> 1%</Text>
                 </HStack>
                 <HStack>
                     <IoHeartSharp size={25}/>
@@ -56,4 +62,4 @@ const ArticleResult = (props) => {
     )
 }
 
-export default ArticleResult
+export default NewsTweetResult
