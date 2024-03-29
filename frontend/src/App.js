@@ -28,97 +28,126 @@ function App() {
 
     // Dummy Data
     const data = { 
-      articles: [
+      tweets: [
         {
-          source: {
-            id: null,
-            name: "Autocar"
-          },
-          author: "Charlie Martin, Will Rimell",
-          title: "IM L6: 500-mile electric saloon unveiled at Geneva motor show",
-          description: "The IM L6 has an 875V electrical architecture, allowing charge rates up to 396kW\n\n\nMG sibling brand, launching in Europe next year, shows new model packing solid-state batteries\n\nIM Motors has unveiled the new L6 electric saloon at the Geneva motor show, conf…",
-          url: "https://www.autocar.co.uk/car-news/new-cars/new-im-l6-chinese-tesla-model-3-rival-500-mile-range",
-          urlToImage: "https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/lm_6_2.jpg",
-          publishedAt: "2024-02-26T10:30:00Z",
-          content: "IM Motors has unveiled its new L6 electric saloon at the Geneva motor show and confirmed that it will arrive in Europe early next year.\r\nIM was founded in late 2020 as a tie-up between MG parent firm… [+1657 chars]"
+          id: "1772931578835939531",
+          createdAt: "2024-03-27 10:20:02+00:00",
+          fullName: "The New York Times",
+          username: "nytimes",
+          profileImage: "https://pbs.twimg.com/profile_images/1098244578472280064/gjkVMelR_normal.png",
+          fullText: "Elon Musk helped create China’s electric vehicle industry. But he is now facing challenges there as well as scrutiny in the West over his reliance on the country. https://t.co/Lxth1KJUxd",
+          replyTo: undefined,
+          lang: "en",
+          quoteCount: "5",
+          retweetCount: "20",
+          replyCount: "52",
+          likeCount: "98",
+          viewCount: "112968"
         },
         {
-          source: {
-            "id": null,
-            "name": "Slashdot.org"
-          },
-          author: "feedfeeder",
-          title: "BYD Chairman Proposes Doubling Share Buyback - WSJ - The Wall Street Journal",
-          description: "BYD Chairman Proposes Doubling Share Buyback - WSJThe Wall Street Journal BYD shares rise on plans to double $28 mln buyback By Investing.comInvesting.com Fresh from eclipsing Tesla in EV sales, BYD plans raft of new upscale models to grab leading share of lu…",
-          url: "https://slashdot.org/firehose.pl?op=view&amp;id=173156440",
-          urlToImage: null,
-          publishedAt: "2024-02-26T10:12:15Z",
-          content: "How many hardware guys does it take to change a light bulb?\r\n\"Well the diagnostics say it's fine buddy, so it's a software problem.\""
+          id: "1772883760859496833",
+          createdAt: "2024-03-27 07:10:01+00:00",
+          fullName: "The New York Times",
+          username: "nytimes",
+          profileImage: "https://pbs.twimg.com/profile_images/1098244578472280064/gjkVMelR_normal.png",
+          fullText: "Tesla and China built a symbiotic relationship, with credits, workers and parts that made Elon Musk ultrarich. Now, his reliance on the country may give Beijing leverage. https://t.co/snQASuAT17",
+          replyTo: undefined,
+          lang: "en",
+          quoteCount: "5",
+          retweetCount: "26",
+          replyCount: "60",
+          likeCount: "106",
+          viewCount: "99229"
         },
         {
-          source: {
-            "id": null,
-            "name": "Theaccidentalpm.com"
-          },
-          "author": "drjim",
-          "title": "Car Product Managers Look To Software To Boost Their Revenue",
-          "description": "Car product managers want to incorporate more software into their cars to allow them to be updated over the air in order to add more features to the car\nThe post Car Product Managers Look To Software To Boost Their Revenue appeared first on The Accidental Pro…",
-          "url": "http://theaccidentalpm.com/sales-2/car-product-managers-look-to-software-to-boost-their-revenue",
-          "urlToImage": "https://i0.wp.com/theaccidentalpm.com/wp-content/uploads/sites/2/2022/06/5-AccPM-8038803690_437ca690f7_c.jpg?fit=800%2C600",
-          "publishedAt": "2024-02-26T10:00:00Z",
-          "content": "If you're new here, you may want to subscribe to my RSS feed. Thanks for visiting!\r\nThe goal is to sell more cars, perhaps software is the key\r\nImage Credit: rakyan ‘boyan’ tantular\r\nProduct managers… [+7618 chars]"
+          id: "1772682700656349647",
+          createdAt: "2024-03-26 17:51:05+00:00",
+          fullName: "Guardian news",
+          username: "guardiannews",
+          profileImage: "https://pbs.twimg.com/profile_images/1061915596328263680/EcBjYl5z_normal.jpg",
+          fullText: "Twitter usage in US ‘fallen by a fifth’ since Elon Musk’s takeover https://t.co/Z9OuFuVNb4",
+          replyTo: undefined,
+          lang: "en",
+          quoteCount: "9",
+          retweetCount: "74",
+          replyCount: "63",
+          likeCount: "171",
+          viewCount: "25385"
         },
         {
-          source: {
-            "id": null,
-            "name": "Forbes"
-          },
-          "author": "Margo T. Oge, Contributor, \n Margo T. Oge, Contributor\n https://www.forbes.com/sites/margooge/",
-          "title": "Misleading Ads On EPA Car Emissions Rule Ignore The Real Benefits",
-          "description": "Not only is there no \"gasoline car ban,\" but EPA’s proposal would boost the American economy, improve public health, and make the U.S. more competitive globally.",
-          "url": "https://www.forbes.com/sites/margooge/2024/02/26/misleading-ads-on-epa-car-emissions-rule-ignore-the-real-benefits/",
-          "urlToImage": "https://imageio.forbes.com/specials-images/imageserve/65d93410a0d571f7c15f3ce9/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds",
-          "publishedAt": "2024-02-26T10:00:00Z",
-          "content": "Electric vs. petrol car, illustration.\r\ngetty\r\nRecently, the American Fuel and Petrochemical Manufacturers Association started running misleading ads in key swing states like Michigan, Wisconsin, and… [+10957 chars]"
+          id: "1772379383770013931",
+          createdAt: "2024-03-25 21:45:48+00:00",
+          fullName: "BBC News (World)",
+          username: "BBCWorld",
+          profileImage: "https://pbs.twimg.com/profile_images/1529107170448523264/q3VwEx38_normal.jpg",
+          fullText: "Elon Musk's X anti-hate group case thrown out https://t.co/hAUQ4aLkOf",
+          replyTo: undefined,
+          lang: "en",
+          quoteCount: "21",
+          retweetCount: "141",
+          replyCount: "94",
+          likeCount: "464",
+          viewCount: "194627"
         },
         {
-          source: {
-            "id": "financial-post",
-            "name": "Financial Post"
-          },
-          "author": "Bloomberg News",
-          "title": "Li Auto Posts First Full Year in Black But Sees Challenges Ahead",
-          "description": "Li Auto Inc. reported revenue for the fourth quarter that beat analyst estimates as deep discounting to fend off rising competition in the Chinese electric vehicle market spurred sales.",
-          "url": "https://financialpost.com/pmn/business-pmn/li-auto-posts-first-full-year-in-black-but-sees-challenges-ahead",
-          "urlToImage": null,
-          "publishedAt": "2024-02-26T09:43:48Z",
-          "content": "(Bloomberg) Li Auto Inc. reported revenue for the fourth quarter that beat analyst estimates as deep discounting to fend off rising competition in the Chinese electric vehicle market spurred sales.\r\n… [+2694 chars]"
+          id: "1772324235249176621",
+          createdAt: "2024-03-25 18:06:40+00:00",
+          fullName: "Financial Times",
+          username: "FT",
+          profileImage: "https://pbs.twimg.com/profile_images/931156393108885504/EqEMtLhM_normal.jpg",
+          fullText: "Lawsuit from Elon Musk’s X against anti-hate speech group dismissed by US judge https://t.co/iHZfej6ZeN",
+          replyTo: undefined,
+          lang: "en",
+          quoteCount: "1",
+          retweetCount: "10",
+          replyCount: "7",
+          likeCount: "29",
+          viewCount: "28042"
         },
         {
-          source: {
-            "id": null,
-            "name": "Securityaffairs.com"
-          },
-          "author": "Pierluigi Paganini",
-          "title": "IntelBroker claimed the hack of the Los Angeles International Airport",
-          "description": "The popular hacker IntelBroker announced that it had hacked the Los Angeles International Airport by exploiting a flaw in one of its CRM systems. The website Hackread first reported that the popular hacker IntelBroker had breached one of the CRM systems used …",
-          "url": "https://securityaffairs.com/159573/hacking/intelbroker-hacked-los-angeles-international-airport.html",
-          "urlToImage": "https://securityaffairs.com/wp-content/uploads/2024/02/image-29.png",
-          "publishedAt": "2024-02-26T09:38:46Z",
-          "content": "US GOV OFFERS A REWARD OF UP TO $15M FOR INFO ON LOCKBIT GANG MEMBERS AND AFFILIATES\r\n | New Redis miner Migo uses novel system weakening techniques\r\n | Critical flaw found in deprecated VMware EAP. … [+47995 chars]"
+          id: "1772318812932653227",
+          createdAt: "2024-03-25 17:45:07+00:00",
+          fullName: "The New York Times",
+          username: "nytimes",
+          profileImage: "https://pbs.twimg.com/profile_images/1098244578472280064/gjkVMelR_normal.png",
+          fullText: "A federal judge in California dismissed X’s lawsuit against a nonprofit organization that studies hate speech online. The ruling is a blow to Elon Musk, who has used legal threats to battle critics of his social media platform. https://t.co/GAYjSYceOZ",
+          replyTo: undefined,
+          lang: "en",
+          quoteCount: "6",
+          retweetCount: "53",
+          replyCount: "28",
+          likeCount: "188",
+          viewCount: "106789"
         },
         {
-          source: {
-            "id": null,
-            "name": "Biztoc.com"
-          },
-          "author": "aol.com",
-          "title": "Malaysia’s prime minister doesn’t want to choose between the U.S. and China: ‘Why must I be tied to one interest?’",
-          "description": "It's getting harder for countries to stay neutral between the U.S. and China as relations between the two superpowers get frostier. Washington is trying to remake the global trading system to encourage countries to reduce their reliance on the Chinese economy…",
-          "url": "https://biztoc.com/x/52c70049708e5947",
-          "urlToImage": "https://c.biztoc.com/p/52c70049708e5947/s.webp",
-          "publishedAt": "2024-02-26T09:38:07Z",
-          "content": "It's getting harder for countries to stay neutral between the U.S. and China as relations between the two superpowers get frostier. Washington is trying to remake the global trading system to encoura… [+283 chars]"
+          id: "1770688249121349919",
+          createdAt: "2024-03-21 05:45:51+00:00",
+          fullName: "The Wall Street Journal",
+          username: "WSJ",
+          profileImage: "https://pbs.twimg.com/profile_images/971415515754266624/zCX0q9d5_normal.jpg",
+          fullText: "Watch: Elon Musk's Neuralink introduced the first patient to receive its brain-computer implant, demonstrating during a livestream that he can now move a computer cursor to play chess using the device https://t.co/SJZHfCWBhX https://t.co/SJZHfCWBhX",
+          replyTo: undefined,
+          lang: "en",
+          quoteCount: "1",
+          retweetCount: "10",
+          replyCount: "3",
+          likeCount: "31",
+          viewCount: "42070"
+        },
+        {
+          id: "1770628655494082654",
+          createdAt: "2024-03-21 01:49:02+00:00",
+          fullName: "Guardian news",
+          username: "guardiannews",
+          profileImage: "https://pbs.twimg.com/profile_images/1061915596328263680/EcBjYl5z_normal.jpg",
+          fullText: "Elon Musk’s Neuralink shows brain-chip patient playing online chess https://t.co/iKY5iwouJk",
+          replyTo: undefined,
+          lang: "en",
+          quoteCount: "0",
+          retweetCount: "4",
+          replyCount: "8",
+          likeCount: "16",
+          viewCount: "11002"
         },
       ]
     };
