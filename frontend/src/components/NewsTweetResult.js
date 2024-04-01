@@ -227,7 +227,7 @@ const NewsTweetResult = (props) => {
             </Box>
             <Heading mt={6} mb={2} fontSize={25}>Replies</Heading>
             <Box flex={1}>
-                <Box borderColor="lightgray" borderRadius={15} borderWidth={1} height={{ base: "400px", xl: "400px", "2xl": "550px" }} overflowY="scroll">
+                <Box borderColor="lightgray" borderRadius={15} borderWidth={1} height={{ base: "400px", xl: "400px", "2xl": "500px" }} overflowY="scroll">
                     {
                         tweets.length === 0 ? 
                         <Center h="100%">

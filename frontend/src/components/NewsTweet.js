@@ -1,5 +1,4 @@
 import { Avatar, Box, Center, Divider, HStack, Image, Link, Text, Tooltip } from "@chakra-ui/react"
-import { FaSourcetree } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 const NewsTweet = (props) => {
@@ -59,10 +58,6 @@ const NewsTweet = (props) => {
         setHovering(false)
     }
 
-    const titleOnClickHandler = () => {
-        window.location.href = props.article.url
-    }
-    console.log(props.selected)
     return (
         <Box onMouseEnter={onMouseEnterHandler} onMouseLeave={onMouseLeaveHandler} _hover={{cursor: "pointer"}} pl={16} pt={4} pr={4} onClick={() => {props.handleSelected(props.index)}} bg={props.isSelected ? "#E7E7E7" : hovering ? "#F7F7F7" : "" }>
             <HStack>
