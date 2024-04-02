@@ -5,7 +5,8 @@ import csv
 async def main():
     api = API()
 
-    await api.pool.add_account("<twitter-username>", "<twitter-password>", "<email>", "<email-password (but i found that you can put any string here and its fine)>")
+    await api.pool.add_account("webscraper555", "B@ndung123", "sohnathan555@gmail.com", "test")
+    await api.pool.add_account("the_scraper_123", "B@ndung123", "impt.nathansoh@gmail.com", "test")
     await api.pool.login_all()
     
     NEWS_AGENCIES = ["BBCWorld", "CNN", "WSJ", "nytimes", "straits_times", "ChannelNewsAsia", "FT", "guardiannews"]
@@ -45,6 +46,7 @@ async def main():
     # print(tweet_ids)
     
     # Reads the existing newsTweets to get the tweet ids of all the scraped news tweets and puts them in the tweets_id list
+    tweet_owners = []
     with open('newsTweets.csv') as file:
         csv_reader = csv.reader(file, delimiter=',')
         line_count = 0
@@ -52,7 +54,7 @@ async def main():
         for row in csv_reader:
             if line_count > 0:
                 tweet_ids.append(row[0])
-            
+                tweet_owners.append(row[3])
             line_count += 1
     
     # Uncomment this if you want to run the replies script right after finishing the news scraping
@@ -67,12 +69,12 @@ async def main():
 
 
     # Creates the csv file for reply tweets
-    with open('replyTweets.csv', 'w', newline='') as file:
+    with open('replyTweets14.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         fields = ["id","createdAt","fullName","userName","profileImage","fullText","replyTo","lang","quoteCount","retweetCount","replyCount","likeCount", "viewCount"]
         writer.writerow(fields)
-        for id in tweet_ids:
-            replyQuery = "lang:en conversation_id:" + str(id) + ' OR quoted_tweet_id:' + str(id)
+        for i in range(tweet_ids.index("1598668332554752001"), len(tweet_ids)):
+            replyQuery = "lang:en conversation_id:" + str(tweet_ids[i]) + " to:" + tweet_owners[i]
             async for tweet in api.search(replyQuery, limit=2000):
                 print(tweet.id, tweet.user.username, tweet.rawContent)
                 writer.writerow([
