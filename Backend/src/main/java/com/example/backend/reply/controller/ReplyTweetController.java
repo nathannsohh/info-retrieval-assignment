@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/tweets")
+@RequestMapping("/api/reply-tweets")
 public class ReplyTweetController {
 
   private final ReplyTweetService replyTweetService;
