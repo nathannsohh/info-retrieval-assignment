@@ -1,8 +1,12 @@
 package com.example.backend.solr;
 
-import lombok.*;
-
 import java.util.List;
+import java.util.Optional;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -10,17 +14,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SolrQueryParams {
-    // The query string to search for in the format of field:value. *:* returns all documents.
-    // e.g., query=userName:john, query=fullText:elonmusk
-    private String query;
-    // Sorting of results by indexed field in ascending (asc) or descending (desc) order.
-    // e.g., sort=createdAt asc, sort=createdAt desc
-    private String sort;
-    // For paginating results, the index of the first document to return.
-    private int start;
-    // For paginating results, the number of documents to return.
-    private int rows;
-    // The fields to return in the response.
-    // e.g., fl=id,createdAt
-    private List<String> fields;
+
+  // For NewsTweets search
+  private Optional<String> query = Optional.empty();
+  // For ReplyTweets search
+  private Optional<String> replyTo = Optional.empty();
+  // Sorting of results by indexed field in ascending (asc) or descending (desc) order.
+  // e.g., sort=createdAt asc, sort=createdAt desc
+  private Optional<List<String>> sort = Optional.empty();
+  // For paginating results, the index of the first document to return. Default value of 0.
+  private Optional<Integer> start = Optional.of(0);
+  // For paginating results, the number of documents to return. Default value of 10.
+  private Optional<Integer> rows = Optional.of(10);
+  // Returns only the fields specified in the response.
+  // e.g., fl=id,createdAt
+  private Optional<List<String>> fields = Optional.empty();
+  // Filters for date range
+  private Optional<String> startDate = Optional.empty();
+  private Optional<String> endDate = Optional.empty();
 }

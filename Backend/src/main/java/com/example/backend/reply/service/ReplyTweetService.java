@@ -36,9 +36,9 @@ public class ReplyTweetService {
     try {
       QueryResponse queryResponse = replyTweetsClient.query(query);
       List<ReplyTweet> replyTweets = queryResponse.getBeans(ReplyTweet.class);
-      return replyTweetMapper.fromReplyTweetToReplyTweetResponseList(replyTweets);
+      return replyTweetMapper.fromReplyTweetListToReplyTweetResponseList(replyTweets);
     } catch (SolrServerException | IOException e) {
-      throw new SolrQueryException("Error while querying tweets", e);
+      throw new SolrQueryException("Error while querying Reply Tweets", e);
     }
   }
 }

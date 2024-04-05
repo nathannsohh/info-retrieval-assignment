@@ -1,4 +1,4 @@
-package com.example.backend.reply.dto;
+package com.example.backend.news.dto;
 
 import java.util.Date;
 import lombok.Getter;
@@ -8,8 +8,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ReplyTweetResponse {
+public class NewsTweetResponse {
 
+  private String id;
   private Date createdAt;
   private String fullName;
   private String userName;
@@ -21,5 +22,5 @@ public class ReplyTweetResponse {
   private Long replyCount;
   private Long likeCount;
   private Long viewCount;
-  private Integer sentiment;
+  private Float score; // relevance score for NewsTweet search
 }

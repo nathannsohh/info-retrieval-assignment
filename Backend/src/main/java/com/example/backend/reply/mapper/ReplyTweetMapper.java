@@ -9,5 +9,5 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ReplyTweetMapper {
 
-  List<ReplyTweetResponse> fromReplyTweetToReplyTweetResponseList(List<ReplyTweet> entity);
+  List<ReplyTweetResponse> fromReplyTweetListToReplyTweetResponseList(List<ReplyTweet> entity);
 }
