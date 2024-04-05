@@ -456,14 +456,14 @@
   <field name="fullText" type="text_general"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
   <field name="lang" type="text_general"/>
-  <field name="likeCount" type="plongs"/>
+  <field name="likeCount" type="plong"/>
   <field name="profileImage" type="text_general"/>
-  <field name="quoteCount" type="plongs"/>
-  <field name="replyCount" type="plongs"/>
-  <field name="replyTo" type="plongs"/>
-  <field name="retweetCount" type="plongs"/>
+  <field name="quoteCount" type="plong"/>
+  <field name="replyCount" type="plong"/>
+  <field name="replyTo" type="string"/>
+  <field name="retweetCount" type="plong"/>
   <field name="userName" type="text_general"/>
-  <field name="viewCount" type="plongs"/>
+  <field name="viewCount" type="plong"/>
   <dynamicField name="*_txt_en_split_tight" type="text_en_splitting_tight" indexed="true" stored="true"/>
   <dynamicField name="*_descendent_path" type="descendent_path" indexed="true" stored="true"/>
   <dynamicField name="*_ancestor_path" type="ancestor_path" indexed="true" stored="true"/>
