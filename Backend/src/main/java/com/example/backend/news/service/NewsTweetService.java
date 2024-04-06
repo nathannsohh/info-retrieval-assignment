@@ -81,4 +81,24 @@ public class NewsTweetService {
       throw new SolrQueryException("Error while querying News Tweets", e);
     }
   }
+
+  public List<String> autocomplete(String term) {
+    SolrQuery query = new SolrQuery();
+    query.setRequestHandler("/suggest");
+    query.set("suggest", true);
+    query.set("suggest.build", true);
+    query.set("suggest.dictionary",
+        "newsTweetSuggester");
+    query.set("suggest.q", term);
+
+    try {
+      QueryResponse response = newsTweetsClient.query(query);
+      return response.getSuggesterResponse().getSuggestedTerms().values().stream()
+          .flatMap(List::stream)
+          .toList();
+    } catch (SolrServerException | IOException e) {
+      LOGGER.error("Error during autocomplete suggestion fetching", e);
+      throw new SolrQueryException("Error while fetching autocomplete suggestions", e);
+    }
+  }
 }
