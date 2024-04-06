@@ -630,6 +630,17 @@
       -->
   </requestDispatcher>
 
+  <!-- SearchComponent for handling "suggest" requests -->
+  <searchComponent name="suggest" class="solr.SuggestComponent">
+    <lst name="suggester">
+      <str name="name">newsTweetSuggester</str>
+      <str name="lookupImpl">FuzzyLookupFactory</str>
+      <str name="dictionaryImpl">DocumentDictionaryFactory</str>
+      <str name="field">fullText</str> <!-- field to generate suggestions from -->
+      <str name="suggestAnalyzerFieldType">text_general</str>
+      <str name="buildOnStartup">false</str>
+    </lst>
+  </searchComponent>
   <!-- Request Handlers
 
        https://solr.apache.org/guide/solr/latest/configuration-guide/requesthandlers-searchcomponents.html
@@ -674,6 +685,21 @@
       <str name="wt">json</str>
       <str name="indent">true</str>
     </lst>
+  </requestHandler>
+
+  <!-- A request handler that suggests queries based on user input -->
+  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+    <lst name="defaults">
+      <str name="suggest">true</str>
+      <str name="suggest.count">5</str>
+      <str name="suggest.dictionary">newsTweetSuggester</str>
+      <str name="spellcheck.onlyMorePopular">false</str>
+      <str name="spellcheck.extendedResults">false</str>
+      <str name="spellcheck.count">10</str>
+    </lst>
+    <arr name="components">
+      <str>suggest</str>
+    </arr>
   </requestHandler>
 
   <!-- Shared parameters for multiple Request Handlers -->
