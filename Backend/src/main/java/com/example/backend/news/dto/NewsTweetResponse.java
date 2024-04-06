@@ -25,4 +25,5 @@ public class NewsTweetResponse {
   private Long viewCount;
   private Float score; // relevance score for NewsTweet search
   private List<String> spellingSuggestions; // spelling suggestions for NewsTweet search
+  private long queryTime; // time taken to execute the query in milliseconds (project requirement)
 }

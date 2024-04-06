@@ -8,19 +8,22 @@ import com.example.backend.solr.SolrQueryBuilder;
 import com.example.backend.solr.SolrQueryParams;
 import com.example.backend.solr.SolrServer;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.response.SpellCheckResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class NewsTweetService {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(NewsTweetService.class);
   private final SolrClient newsTweetsClient;
   private final SolrQueryBuilder queryBuilder;
   private final NewsTweetMapper newsTweetMapper;
@@ -36,37 +39,42 @@ public class NewsTweetService {
   public List<NewsTweetResponse> search(SolrQueryParams queryParams) {
     SolrQuery query = queryBuilder.build(queryParams);
     try {
+      long startTime = System.currentTimeMillis();
       QueryResponse queryResponse = newsTweetsClient.query(query);
+      long endTime = System.currentTimeMillis();
+      long queryTime = endTime - startTime;
+
+      // Get the original query from queryParams for logging
+      String userQuery = queryParams.getQuery().orElse("Unknown Query");
+      LOGGER.info("Query time for \"%s\" is: %dms".formatted(userQuery, queryTime));
+
       List<NewsTweet> newsTweets = queryResponse.getBeans(NewsTweet.class);
-      List<NewsTweetResponse> responses;
+      List<NewsTweetResponse> responses = newsTweetMapper.fromNewsTweetListToNewsTweetResponseList(
+          newsTweets);
 
-      // Addition of relevance score if there are responses
-      if (!newsTweets.isEmpty()) {
-        responses = newsTweetMapper.fromNewsTweetListToNewsTweetResponseList(newsTweets);
-        for (int i = 0; i < newsTweets.size(); i++) {
-          responses.get(i)
-              .setScore((Float) queryResponse.getResults().get(i).getFieldValue("score"));
-        }
-      } else { // Else there are no responses, create a dummy response to store spellcheck suggestions
-        responses = new ArrayList<>();
-        NewsTweetResponse suggestionResponse = new NewsTweetResponse();
-        responses.add(suggestionResponse);
-      }
-
+      // Populate scores and spellcheck suggestions
       SpellCheckResponse spellCheckResponse = queryResponse.getSpellCheckResponse();
       if (spellCheckResponse != null && !spellCheckResponse.isCorrectlySpelled()) {
         List<String> suggestions = spellCheckResponse.getSuggestions().stream()
-            .sorted((s1, s2) -> {
-              List<Integer> freqs1 = s1.getAlternativeFrequencies();
-              List<Integer> freqs2 = s2.getAlternativeFrequencies();
-              return freqs2.get(0).compareTo(freqs1.get(0)); // Compare based on the first frequency
-            })
-            .limit(3) // Limit to top 3 suggestions
+            .sorted(Comparator.comparing(s -> -s.getAlternativeFrequencies()
+                .get(0))) // Sort in descending order of frequency
+            .limit(5) // Limit to top 5 suggestions
             .flatMap(suggestion -> suggestion.getAlternatives().stream())
+            .distinct() // Remove duplicate suggestions
             .toList();
-        // Assign suggestions to the first response (or only response if there were no news tweets)
-        responses.get(0).setSpellingSuggestions(suggestions);
+
+        // If there are news tweets, add suggestions to all. Otherwise, create a dummy response.
+        if (!responses.isEmpty()) {
+          responses.forEach(response -> response.setSpellingSuggestions(suggestions));
+        } else {
+          NewsTweetResponse suggestionResponse = new NewsTweetResponse();
+          suggestionResponse.setSpellingSuggestions(suggestions);
+          responses.add(suggestionResponse);
+        }
       }
+
+      // Set query time for all responses
+      responses.forEach(response -> response.setQueryTime(queryTime));
 
       return responses;
     } catch (SolrServerException | IOException e) {
