@@ -278,12 +278,14 @@
       <tokenizer name="standard"/>
       <filter name="stop" ignoreCase="true" words="stopwords.txt"/>
       <filter name="lowercase"/>
+      <filter class="solr.ShingleFilterFactory" minShingleSize="2" maxShingleSize="5"/>
     </analyzer>
     <analyzer type="query">
       <tokenizer name="standard"/>
       <filter name="stop" ignoreCase="true" words="stopwords.txt"/>
       <filter name="synonymGraph" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
       <filter name="lowercase"/>
+      <filter class="solr.ShingleFilterFactory" minShingleSize="2" maxShingleSize="5"/>
     </analyzer>
   </fieldType>
   <fieldType name="text_general_rev" class="solr.TextField" positionIncrementGap="100">
