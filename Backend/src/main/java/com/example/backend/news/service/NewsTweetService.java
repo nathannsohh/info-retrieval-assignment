@@ -8,11 +8,13 @@ import com.example.backend.solr.SolrQueryBuilder;
 import com.example.backend.solr.SolrQueryParams;
 import com.example.backend.solr.SolrServer;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.response.SpellCheckResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,13 +38,34 @@ public class NewsTweetService {
     try {
       QueryResponse queryResponse = newsTweetsClient.query(query);
       List<NewsTweet> newsTweets = queryResponse.getBeans(NewsTweet.class);
-      // Mapping allows the addition of relevance score
-      List<NewsTweetResponse> responses = newsTweetMapper.fromNewsTweetListToNewsTweetResponseList(
-          newsTweets);
+      List<NewsTweetResponse> responses;
 
-      // Populate the scores obtained from Solr live query into the response
-      for (int i = 0; i < newsTweets.size(); i++) {
-        responses.get(i).setScore((Float) queryResponse.getResults().get(i).getFieldValue("score"));
+      // Addition of relevance score if there are responses
+      if (!newsTweets.isEmpty()) {
+        responses = newsTweetMapper.fromNewsTweetListToNewsTweetResponseList(newsTweets);
+        for (int i = 0; i < newsTweets.size(); i++) {
+          responses.get(i)
+              .setScore((Float) queryResponse.getResults().get(i).getFieldValue("score"));
+        }
+      } else { // Else there are no responses, create a dummy response to store spellcheck suggestions
+        responses = new ArrayList<>();
+        NewsTweetResponse suggestionResponse = new NewsTweetResponse();
+        responses.add(suggestionResponse);
+      }
+
+      SpellCheckResponse spellCheckResponse = queryResponse.getSpellCheckResponse();
+      if (spellCheckResponse != null && !spellCheckResponse.isCorrectlySpelled()) {
+        List<String> suggestions = spellCheckResponse.getSuggestions().stream()
+            .sorted((s1, s2) -> {
+              List<Integer> freqs1 = s1.getAlternativeFrequencies();
+              List<Integer> freqs2 = s2.getAlternativeFrequencies();
+              return freqs2.get(0).compareTo(freqs1.get(0)); // Compare based on the first frequency
+            })
+            .limit(3) // Limit to top 3 suggestions
+            .flatMap(suggestion -> suggestion.getAlternatives().stream())
+            .toList();
+        // Assign suggestions to the first response (or only response if there were no news tweets)
+        responses.get(0).setSpellingSuggestions(suggestions);
       }
 
       return responses;
