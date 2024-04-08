@@ -22,4 +22,6 @@ public class ReplyTweetResponse {
   private Long likeCount;
   private Long viewCount;
   private Integer sentiment;
+  private Integer sarcasm;
+  private String sentimentDetail;
 }

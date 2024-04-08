@@ -44,6 +44,10 @@ public class ReplyTweet {
   private Long viewCount;
   @Field
   private Integer sentiment;
+  @Field
+  private Integer sarcasm;
+  @Field
+  private String sentimentDetail;
 
   public SolrInputDocument toSolrDocument() {
     SolrInputDocument doc = new SolrInputDocument();
@@ -61,6 +65,8 @@ public class ReplyTweet {
     doc.addField("likeCount", likeCount);
     doc.addField("viewCount", viewCount);
     doc.addField("sentiment", sentiment);
+    doc.addField("sarcasm", sarcasm);
+    doc.addField("sentimentDetail", sentimentDetail);
     return doc;
   }
 

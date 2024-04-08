@@ -119,6 +119,8 @@ public class SolrIndexer {
       replyTweet.setLikeCount(safeParseLong(csvRecord.get("likeCount")));
       replyTweet.setViewCount(safeParseLong(csvRecord.get("viewCount")));
       replyTweet.setSentiment(safeParseInt(csvRecord.get("sentiment")));
+      replyTweet.setSarcasm(safeParseInt(csvRecord.get("sarcasm")));
+      replyTweet.setSentimentDetail(csvRecord.get("sentimentDetail"));
       return replyTweet;
     });
     LOGGER.info("Reply Tweets parsed");
@@ -175,7 +177,7 @@ public class SolrIndexer {
       return null;
     }
   }
-  
+
   // Utility method to safely parse long integers from strings
   private Long safeParseLong(String str) {
     if (str == null || str.trim().isEmpty()) {
