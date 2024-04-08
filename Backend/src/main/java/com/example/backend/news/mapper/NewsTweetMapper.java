@@ -10,4 +10,6 @@ import org.mapstruct.MappingConstants;
 public interface NewsTweetMapper {
 
   List<NewsTweetResponse> fromNewsTweetListToNewsTweetResponseList(List<NewsTweet> entity);
+
+  NewsTweetResponse fromNewsTweetToNewsTweetResponse(NewsTweet entity);
 }

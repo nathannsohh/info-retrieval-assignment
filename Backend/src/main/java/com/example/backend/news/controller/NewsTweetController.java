@@ -1,6 +1,6 @@
 package com.example.backend.news.controller;
 
-import com.example.backend.news.dto.NewsTweetResponse;
+import com.example.backend.news.dto.NewsTweetAnalysisResponse;
 import com.example.backend.news.service.NewsTweetService;
 import com.example.backend.solr.SolrQueryParams;
 import java.util.List;
@@ -24,10 +24,10 @@ public class NewsTweetController {
   }
 
   @GetMapping("/search")
-  public ResponseEntity<List<NewsTweetResponse>> getTweets(
+  public ResponseEntity<NewsTweetAnalysisResponse> getTweets(
       @ModelAttribute SolrQueryParams queryParams) {
-    List<NewsTweetResponse> tweets = newsTweetService.search(queryParams);
-    return ResponseEntity.ok(tweets);
+    NewsTweetAnalysisResponse tweetsWithStats = newsTweetService.search(queryParams);
+    return ResponseEntity.ok(tweetsWithStats);
   }
 
   @GetMapping("/autocomplete")

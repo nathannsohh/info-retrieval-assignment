@@ -1,7 +1,6 @@
 package com.example.backend.news.dto;
 
 import java.util.Date;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,6 +23,4 @@ public class NewsTweetResponse {
   private Long likeCount;
   private Long viewCount;
   private Float score; // relevance score for NewsTweet search
-  private List<String> spellingSuggestions; // spelling suggestions for NewsTweet search
-  private long queryTime; // time taken to execute the query in milliseconds (project requirement)
 }
