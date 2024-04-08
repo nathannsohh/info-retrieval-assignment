@@ -6,4 +6,6 @@ twitter-scraping/bin
 twitter-scraping/include
 twitter-scraping/lib
 twitter-scraping/accounts.db
+twitter-scraping/scrape.py
 twitter-scraping/pyvenv.cfg
+twitter-scraping/data_joash/
