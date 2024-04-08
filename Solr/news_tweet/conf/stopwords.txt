@@ -48,8 +48,5 @@ was
 will
 with
 
-elon
-musk
-elonmusk
 http
 https
