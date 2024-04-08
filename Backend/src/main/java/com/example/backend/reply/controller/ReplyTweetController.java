@@ -1,9 +1,8 @@
 package com.example.backend.reply.controller;
 
-import com.example.backend.reply.dto.ReplyTweetResponse;
+import com.example.backend.reply.dto.SentimentAnalysisResponse;
 import com.example.backend.reply.service.ReplyTweetService;
 import com.example.backend.solr.SolrQueryParams;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +22,10 @@ public class ReplyTweetController {
   }
 
   @GetMapping("/search")
-  public ResponseEntity<List<ReplyTweetResponse>> getTweets(
+  public ResponseEntity<SentimentAnalysisResponse> getTweets(
       @ModelAttribute SolrQueryParams queryParams) {
-    List<ReplyTweetResponse> tweets = replyTweetService.search(queryParams);
-    return ResponseEntity.ok(tweets);
+    SentimentAnalysisResponse tweetsWithStats = replyTweetService.search(queryParams);
+    return ResponseEntity.ok(tweetsWithStats);
   }
 
 }
