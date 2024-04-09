@@ -13,9 +13,12 @@ const SENTIMENT_COLOUR_MAP = {
 }
 
 const EMOTION_COLOUR_MAP = {
-    "shocked": "gray",
+    "surprise": "gray",
     "joy": "yellow",
-    "disgust": "teal"
+    "disgust": "teal",
+    "anger": "red",
+    "fear": "purple",
+    "sadness": "blue",
 }
 
 const ReplyTweet = (props) => {
