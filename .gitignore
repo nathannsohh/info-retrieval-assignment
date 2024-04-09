@@ -9,3 +9,4 @@ twitter-scraping/accounts.db
 twitter-scraping/scrape.py
 twitter-scraping/pyvenv.cfg
 twitter-scraping/data_joash/
+accounts.db

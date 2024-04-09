@@ -5,8 +5,7 @@ import csv
 async def main():
     api = API()
 
-    await api.pool.add_account("webscraper555", "B@ndung123", "sohnathan555@gmail.com", "test")
-    await api.pool.add_account("the_scraper_123", "B@ndung123", "impt.nathansoh@gmail.com", "test")
+    await api.pool.add_account("cookiejarreach", "Jlk12345!", "joashlee7799@gmail.com", "testtest")
     await api.pool.login_all()
     
     NEWS_AGENCIES = ["BBCWorld", "CNN", "WSJ", "nytimes", "straits_times", "ChannelNewsAsia", "FT", "guardiannews"]
@@ -69,11 +68,11 @@ async def main():
 
 
     # Creates the csv file for reply tweets
-    with open('replyTweets14.csv', 'w', newline='') as file:
+    with open('replyTweets_j22.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         fields = ["id","createdAt","fullName","userName","profileImage","fullText","replyTo","lang","quoteCount","retweetCount","replyCount","likeCount", "viewCount"]
         writer.writerow(fields)
-        for i in range(tweet_ids.index("1598668332554752001"), len(tweet_ids)):
+        for i in range(tweet_ids.index("1521724687339950082"), 0, -1):
             replyQuery = "lang:en conversation_id:" + str(tweet_ids[i]) + " to:" + tweet_owners[i]
             async for tweet in api.search(replyQuery, limit=2000):
                 print(tweet.id, tweet.user.username, tweet.rawContent)
