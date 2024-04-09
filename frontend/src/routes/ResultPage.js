@@ -1,20 +1,14 @@
-import { Box, Divider, HStack, Image, Input, Text, InputGroup, InputLeftElement, Button, Flex, Heading, Center, Spinner, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody, Spacer, useDisclosure } from "@chakra-ui/react"
+import { Box, Divider, HStack, Image, Input, Text, InputGroup, InputLeftElement, Button, Flex, Center, Spinner, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody, Spacer, useDisclosure } from "@chakra-ui/react"
 import LANDSCAPE_LOGO from '../landscape-logo.png'
 import { IoIosSearch } from "react-icons/io";
 import { useNavigate, useSearchParams, useLoaderData } from "react-router-dom";
-import {
-    AutoComplete,
-    AutoCompleteInput,
-    AutoCompleteItem,
-    AutoCompleteList,
-  } from "@choc-ui/chakra-autocomplete";
 import { useEffect, useState } from "react";
 import NewsTweet from "../components/NewsTweet";
 import NewsTweetResult from "../components/NewsTweetResult";
 import axios from "axios";
 import { RangeDatepicker } from "chakra-dayzed-datepicker";
 
-const ResultPage = (props) => {
+const ResultPage = () => {
     const navigate = useNavigate()
 
     const { isOpen, onToggle, onClose } = useDisclosure()
@@ -60,11 +54,6 @@ const ResultPage = (props) => {
             setStillHasTweets(true)
             setPage(1)
         }
-      }
-  
-    const onOptionClickHandler = (value) => {
-        setInputValue(value)
-        onSearchHandler(value)
     }
 
     const handleSelected = (index) => {
@@ -254,17 +243,12 @@ const ResultPage = (props) => {
             <Box backgroundColor="white" position="fixed" zIndex={1000} width="100%" borderBottom="1px" borderColor="#DDDCDC">
                 <HStack p={4} pl={16} width="850px">
                     <Image src={LANDSCAPE_LOGO} width="200px" mr={4} onClick={() => navigate("/")} _hover={{cursor: "pointer"}}/>
-                    <AutoComplete openOnFocus={false} onSelectOption={(item) => { onOptionClickHandler(item.item.value) }} prefocusFirstItem={false} emptyState={false}>
                         <InputGroup borderColor="#666666" size='md' w="450px">
                         <InputLeftElement>
                             <IoIosSearch size={23} color="#666666"/>
                         </InputLeftElement>
-                        <AutoCompleteInput borderRadius="20px" borderWidth="1px" borderColor="#666666" w="450px" onKeyUp={handleKeyDown} onChange={onChangeHandler} value={inputValue}/>
+                        <Input borderRadius="20px" borderWidth="1px" borderColor="#666666" w="450px" onKeyUp={handleKeyDown} onChange={onChangeHandler} value={inputValue}/>
                         </InputGroup>
-                        <AutoCompleteList>
-                            {props.autoCompleteValues.map((value, index) => <AutoCompleteItem key={index} value={value}>{value}</AutoCompleteItem>)}
-                        </AutoCompleteList>
-                    </AutoComplete>
                     <Button colorScheme='blue' fontWeight="450" pl={5} pr={5} borderRadius="18px">Search</Button>
                 </HStack>
             </Box>
