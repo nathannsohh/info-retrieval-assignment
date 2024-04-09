@@ -5,7 +5,7 @@ import csv
 async def main():
     api = API()
 
-    await api.pool.add_account("cookiejarreach", "Jlk12345!", "joashlee7799@gmail.com", "testtest")
+    await api.pool.add_account("<TWITTER-USERNAME>", "<TWITTER-PASSWORD>", "<EMAIL>", "<EMAIL-PASSWORD>")
     await api.pool.login_all()
     
     NEWS_AGENCIES = ["BBCWorld", "CNN", "WSJ", "nytimes", "straits_times", "ChannelNewsAsia", "FT", "guardiannews"]
