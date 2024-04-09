@@ -1,4 +1,4 @@
-import { Avatar, Box, Center, Divider, HStack, Image, Link, Text, Tooltip } from "@chakra-ui/react"
+import { Avatar, Box, Divider, HStack, Link, Text } from "@chakra-ui/react"
 import { useState, useEffect } from "react";
 
 const NewsTweet = (props) => {
@@ -48,7 +48,7 @@ const NewsTweet = (props) => {
 
     useEffect(() => {
         formatContentString(props.tweet.fullText) 
-    }, [])
+    }, [props.tweet])
 
     const onMouseEnterHandler = () => {
         setHovering(true)
@@ -64,7 +64,7 @@ const NewsTweet = (props) => {
                 <Avatar src={props.tweet.profileImage} mr={2}/>
                 <Box>
                     <Text fontWeight="bold">{props.tweet.fullName}</Text>
-                    <Text color="#616566">@{props.tweet.username}</Text>
+                    <Text color="#616566">@{props.tweet.userName}</Text>
                 </Box>
             </HStack>
             <Text mt={3} mb={3} fontSize={17} color="black">{fullText} <Link href={articleLink} isExternal color='blue.700'>{articleLink}</Link></Text>
