@@ -15,7 +15,7 @@ To run the Solr instance:
 ```
 $ cd path/to/solr/solr-9.5.0
 ```
-2. Copy the `news_tweet`, `reply_tweet` folders and the `solr.xml` file in the repository's `Solr` directory and paste them into you `solr-9.5.9/server/solr/` directory.
+2. Copy the `news_tweet`, `reply_tweet` folders and the `solr.xml` file in the repository's `Solr` directory and paste them into your `solr-9.5.9/server/solr/` directory.
 
 2. Run the Solr instance by running the following command:
 ```
