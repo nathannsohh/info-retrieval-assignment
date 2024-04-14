@@ -36,7 +36,7 @@ $ mvn clean package
 ```
 3. Run the Java Springboot application:
 ```
-$ java - jar target/backend-0.0.1-SNAPSHOT.jar
+$ java -jar target/backend-0.0.1-SNAPSHOT.jar
 ```
 4. Wait for the message "Reply Tweets committed" before making any API calls. The server uses port 8080.
 
