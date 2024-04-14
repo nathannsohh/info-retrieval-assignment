@@ -68,12 +68,11 @@ const NewsTweet = (props) => {
                 </Box>
             </HStack>
             <Text mt={3} mb={3} fontSize={17} color="black">{fullText} <Link href={articleLink} isExternal color='blue.700'>{articleLink}</Link></Text>
-            <Text as="span" fontWeight={500} color="#616566">{formatCreatedAt(props.tweet.createdAt)} • <Text as="span" color="black" fontWeight="bold">{formatCount(props.tweet.viewCount)}</Text> Views</Text>
+            <Text as="span" fontWeight={500} color="#616566">{formatCreatedAt(props.tweet.createdAt)}</Text>
             <HStack mt={3} spacing={5} fontWeight={500} color="#616566" fontSize={16} mb={3}>
                 <Text as="span"><Text as="span" fontWeight="bold" color="black">{formatCount(props.tweet.retweetCount)}</Text> Retweets</Text>
                 <Text as="span"><Text as="span" fontWeight="bold" color="black">{formatCount(props.tweet.quoteCount)}</Text> Quotes</Text>
                 <Text as="span"><Text as="span" fontWeight="bold" color="black">{formatCount(props.tweet.likeCount)}</Text> Likes</Text>
-                <Text as="span"><Text as="span" fontWeight="bold" color="black">{formatCount(props.tweet.replyCount)}</Text> Replies</Text>
                 {hovering && <Text color="#505357" fontSize={14}  ml={3}>View replies and sentiment of news ▶</Text>}
             </HStack>
             <Divider />
