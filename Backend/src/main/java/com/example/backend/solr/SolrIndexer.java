@@ -126,9 +126,15 @@ public class SolrIndexer {
     LOGGER.info("Reply Tweets parsed");
 
     for (ReplyTweet replyTweet : replyTweets) {
+//      LOGGER.info("Preparing to index replyTweet with ID: {}", replyTweet.getId());
+      if (replyTweet.getId() == null) {
+        LOGGER.error("Found replyTweet with null ID, skipping: {}", replyTweet);
+        continue;
+      }
       try {
         replyTweetsClient.add(replyTweet.toSolrDocument()); // Index the replyTweet
       } catch (Exception e) {
+        LOGGER.error("Error while indexing replyTweet with ID: {}", replyTweet.getId(), e);
         throw new IndexingException("Error while indexing replyTweets", e);
       }
     }
